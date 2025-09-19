@@ -42,7 +42,7 @@ jobs:
           pytest python_tests/ --junitxml=report.xml --maxfail=1 --disable-warnings -v
 
       - name: Upload JUnit XML report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: junit-report
           path: report.xml
