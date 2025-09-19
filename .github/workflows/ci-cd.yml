@@ -10,9 +10,34 @@ jobs:
   selenium-tests:
     runs-on: ubuntu-latest
 
+    services:
+      # Optional: MySQL service if your Laravel app uses a database
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: aqi_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd "mysqladmin ping --silent"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 3
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, bcmath, mysqli, pdo_mysql
+          coverage: none
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -24,7 +49,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install selenium pytest
 
-      - name: Set up Chrome
+      - name: Set up Chrome for Selenium
         uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: latest
@@ -35,7 +60,7 @@ jobs:
           php artisan key:generate
           php artisan migrate
           php artisan serve --host=127.0.0.1 --port=8000 &
-          sleep 5
+          sleep 10  # wait for server to start
 
       - name: Run Selenium tests with XML report
         run: |
