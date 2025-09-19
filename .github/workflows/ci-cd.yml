@@ -59,4 +59,10 @@ jobs:
 
       # ---- Run Laravel tests ----
       - name: Run PHPUnit tests
+        env:
+            APP_ENV: testing
+            APP_KEY: base64:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=
+            DB_CONNECTION: sqlite
+            DB_DATABASE: ":memory:"
         run: php artisan test
+
