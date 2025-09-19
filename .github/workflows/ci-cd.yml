@@ -28,7 +28,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pytest
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest selenium chromedriver-autoinstaller
 
     - name: Run pytest
       run: |
-        pytest python_tests --maxfail=1 --disable-warnings -q
+        pytest python_tests
