@@ -1,10 +1,10 @@
 import time
 import pytest
 from selenium.webdriver.common.by import By
-from conftest import BASE_URL
 
-def test_click_download_only(driver):
-    driver.get(BASE_URL)
+
+def test_click_download_only(driver, base_url):
+    driver.get(base_url)
     time.sleep(2) 
 
     download_btn = driver.find_element(By.XPATH, "//a[normalize-space()='Download CSV']")

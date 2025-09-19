@@ -1,9 +1,9 @@
 import time
 
 from selenium.webdriver.common.by import By
-from conftest import BASE_URL
-def test_message_button(driver):
-    driver.get(BASE_URL)
+
+def test_message_button(driver, base_url):
+    driver.get(base_url)
 
     time.sleep(2)
 

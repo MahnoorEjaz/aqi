@@ -1,10 +1,10 @@
 import time
 import pytest
 from selenium.webdriver.common.by import By
-from conftest import BASE_URL
 
-def test_save_messages_with_empty_fields(driver):
-    driver.get(BASE_URL)
+
+def test_save_messages_with_empty_fields(driver, base_url):
+    driver.get(base_url)
     time.sleep(2)
 
     # Click Messages button

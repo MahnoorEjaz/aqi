@@ -1,10 +1,10 @@
 import time
 import pytest
 from selenium.webdriver.common.by import By
-from conftest import BASE_URL
 
-def test_populate_messages_and_save(driver):
-    driver.get(BASE_URL)
+
+def test_populate_messages_and_save(driver, base_url):
+    driver.get(base_url)
     time.sleep(2)  
     time.sleep(2)
 

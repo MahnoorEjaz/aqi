@@ -1,11 +1,11 @@
 import time
 from selenium.webdriver.common.by import By
-from conftest import BASE_URL
+
 
  
 FILE_PATH = r"D:\downloads\contacts.csv"  
-def test_click_browse_button(driver):
-    driver.get(BASE_URL)
+def test_click_browse_button(driver, base_url):
+    driver.get(base_url)
     time.sleep(2)
 
     browse_label = driver.find_element(By.XPATH, "//label[normalize-space()='Browse']")

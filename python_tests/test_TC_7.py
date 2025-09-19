@@ -1,11 +1,11 @@
 import time
 from selenium.webdriver.common.by import By
-from conftest import BASE_URL
+
 
  
 FILE_PATH = r"D:\downloads\thread.png"
-def test_invalid_file(driver):
-    driver.get(BASE_URL)
+def test_invalid_file(driver, base_url):
+    driver.get(base_url)
     time.sleep(2)
 
     browse_label = driver.find_element(By.XPATH, "//label[normalize-space()='Browse']")

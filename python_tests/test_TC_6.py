@@ -1,10 +1,10 @@
 import time
 import pytest
 from selenium.webdriver.common.by import By
-from conftest import BASE_URL
 
-def test_process_without_data(driver):
-    driver.get(BASE_URL)
+
+def test_process_without_data(driver, base_url):
+    driver.get(base_url)
     time.sleep(2)
 
     process_btn = driver.find_element(By.XPATH, "//button[normalize-space()='Process']")

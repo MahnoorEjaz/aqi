@@ -1,9 +1,8 @@
 
-from conftest import BASE_URL
 import time
-def test_homepage_contains_text(driver):
+def test_homepage_contains_text(driver, base_url):
 
-    driver.get(BASE_URL)
+    driver.get(base_url)
 
     time.sleep(2)
 

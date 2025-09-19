@@ -4,7 +4,6 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-from conftest import BASE_URL
 FILE_PATH = r"D:\downloads\contacts.csv"  
 DOWNLOAD_DIR = r"D:\downloads"  
 FILE_NAME = "aqi_results.csv"   
@@ -22,8 +21,8 @@ def driver():
     yield d
     d.quit()
 
-def test_download_csv(driver):
-    driver.get(BASE_URL)
+def test_download_csv(driver, base_url):
+    driver.get(base_url)
     time.sleep(2)
 
     browse_label = driver.find_element(By.XPATH, "//label[normalize-space()='Browse']")
