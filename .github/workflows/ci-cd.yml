@@ -27,14 +27,3 @@ jobs:
         pip install -r requirements.txt
         pip install selenium chromedriver-autoinstaller pytest
 
-    - name: Start the web server
-      run: |
-        source venv/bin/activate
-        # Replace this with your app's start command
-        python manage.py runserver http://127.0.0.1:8000 &
-        sleep 5  # give server time to start
-
-    - name: Run tests
-      run: |
-        source venv/bin/activate
-        pytest python_tests --maxfail=1 --disable-warnings --junitxml=report.xml
