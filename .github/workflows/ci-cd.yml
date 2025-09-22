@@ -26,4 +26,9 @@ jobs:
         pip install --upgrade pip
         pip install -r requirements.txt
         pip install selenium chromedriver-autoinstaller pytest
+          pip install pytest   # add pytest if not in requirements.txt
 
+    - name: Run automated tests
+      run: |
+        source venv/bin/activate
+        pytest --maxfail=1 --disable-warnings --junitxml=report.xml
