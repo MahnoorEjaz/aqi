@@ -27,6 +27,12 @@ jobs:
         pip install -r requirements.txt
         pip install selenium chromedriver-autoinstaller pytest
           pip install pytest   # add pytest if not in requirements.txt
+    
+    - name: Start app
+      run: |
+        source venv/bin/activate
+        python manage.py runserver 0.0.0.0:8000 &
+        sleep 15  # give server time to start
 
     - name: Run automated tests
       run: |
